@@ -25,7 +25,7 @@
     </style>
 </head>
 <body>
-    <h1>Hello ${user}! ;)</h1>
+    <h1>${helloMessage} ;)</h1>
     <h2>${welcomeMessage}</h2>
 
     <h1>Simple Service Challenge <span class="badge badge-secondary">New</span></h1>
