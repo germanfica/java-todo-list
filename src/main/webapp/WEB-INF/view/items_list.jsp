@@ -12,6 +12,7 @@
 <body>
   <table class="table">
     <!-- Table header -->
+    <caption><h2>Todo Items</h2></caption>
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
