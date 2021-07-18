@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.germanfica.util.Mappings" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,9 @@
     crossorigin="anonymous">
 </head>
 <body>
+  <c:url var="addUrl" value="${Mappings.ADD_ITEM}"/>
+  <a href="${addUrl}" type="button" class="btn btn-primary btn-sm">New Item</a>
+
   <table class="table">
     <!-- Table header -->
     <caption><h2>Todo Items</h2></caption>
@@ -19,16 +23,23 @@
         <th scope="col">Title</th>
         <th scope="col">Details</th>
         <th scope="col">Deadline</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <!-- Table body -->
     <tbody>
       <c:forEach var="item" items="${todoData.items}">
+
+        <c:url var="deleteUrl" value="${Mappings.DELETE_ITEM}">
+            <c:param name="id" value="${item.id}"/>
+        </c:url>
+
         <tr>
           <th scope="row">1</th>
           <td><c:out value="${item.title}"/></td>
           <td><c:out value="${item.details}"/></td>
           <td><c:out value="${item.deadline}"/></td>
+          <td><a href="${deleteUrl}">Delete</a></td>
         </tr>
       </c:forEach>
     </tbody>
