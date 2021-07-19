@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 
@@ -47,6 +48,13 @@ public class TodoItemController {
         model.addAttribute(AttributeNames.TODO_ITEM, todoItem);
 
         return ViewNames.ADD_ITEM;
+    }
+
+    @GetMapping(Mappings.DELETE_ITEM)
+    public String deleteItem(@RequestParam int id) {
+        log.info("Deleting item with id={}", id);
+        todoItemService.removeItem(id);
+        return "redirect:/" + Mappings.ITEMS;
     }
 
     @PostMapping(Mappings.ADD_ITEM)
