@@ -23,6 +23,7 @@
         <th scope="col">Title</th>
         <th scope="col">Details</th>
         <th scope="col">Deadline</th>
+        <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
@@ -30,15 +31,20 @@
     <tbody>
       <c:forEach var="item" items="${todoData.items}">
 
-        <c:url var="deleteUrl" value="${Mappings.DELETE_ITEM}">
-            <c:param name="id" value="${item.id}"/>
-        </c:url>
+      <c:url var="editUrl" value="${Mappings.ADD_ITEM}">
+        <c:param name="id" value="${item.id}"/>
+      </c:url>
+
+      <c:url var="deleteUrl" value="${Mappings.DELETE_ITEM}">
+        <c:param name="id" value="${item.id}"/>
+      </c:url>
 
         <tr>
-          <th scope="row">1</th>
+          <th scope="row"><c:out value="${item.id}"/></th>
           <td><c:out value="${item.title}"/></td>
           <td><c:out value="${item.details}"/></td>
           <td><c:out value="${item.deadline}"/></td>
+          <td><a href="${editUrl}">Edit</a></td>
           <td><a href="${deleteUrl}">Delete</a></td>
         </tr>
       </c:forEach>
