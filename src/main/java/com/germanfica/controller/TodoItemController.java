@@ -70,4 +70,12 @@ public class TodoItemController {
         }
         return "redirect:/" + Mappings.ITEMS;
     }
+
+    // http://localhost:8080/todo-list/viewItem
+    @GetMapping(Mappings.VIEW_ITEM)
+    public String viewItem(@RequestParam int id, Model model) {
+        TodoItem todoItem = todoItemService.getItem(id);
+        model.addAttribute(AttributeNames.TODO_ITEM, todoItem);
+        return ViewNames.VIEW_ITEM;
+    }
 }
